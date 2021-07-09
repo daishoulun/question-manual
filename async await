@@ -1,0 +1,4 @@
+async getList() {
+            const res = axios.get('/getList')
+            console.log(res)
+        }
