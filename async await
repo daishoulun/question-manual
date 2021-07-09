@@ -2,3 +2,19 @@ async getList() {
             const res = axios.get('/getList')
             console.log(res)
         }
+
+
+
+async getList() {
+      const res = await this.getInit(true)
+      console.log(res)
+    },
+    getInit(val) {
+      return new Promise((resolve, reject) => {
+        if (val) {
+          resolve(111)
+        } else {
+          reject(222)
+        }
+      })
+    },
