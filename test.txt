@@ -1,0 +1,24 @@
+    <div class="test">
+      <span>
+        <i>x</i>
+        dsfdsfsd
+      </span>
+    </div>
+    
+    
+.test {
+  height: 100px;
+  padding-top: 16px;
+  background: #ffffff;
+  border: 1px solid red;
+  width: 500px;
+  overflow-x: auto;
+  white-space: nowrap; // 写了这个才不换行
+  span {
+    position: relative;
+    i {
+      position: absolute;
+      bottom: 100%
+    }
+  }
+}
