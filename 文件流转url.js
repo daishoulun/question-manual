@@ -4,15 +4,19 @@ function convertFileForDownload(fileData, fileName) {
     type:
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8",
   });
-  console.log(blob)
-  var downloadElement = document.createElement("a");
-  var href = window.URL.createObjectURL(blob); // 创建下载的链接
-  downloadElement.href = href;
-  downloadElement.download = fileName; // 下载后文件名
-  document.body.appendChild(downloadElement);
-  downloadElement.click(); // 点击下载
-  document.body.removeChild(downloadElement); // 下载完成移除元素
-  window.URL.revokeObjectURL(href); // 释放掉blob对象
+  if (window.navigator.msSaveOrOpenBlob) {
+    //兼容ie
+    window.navigator.msSaveBlob(blob,  fileName);
+  } else {
+    var downloadElement = document.createElement("a");
+    var href = window.URL.createObjectURL(blob); // 创建下载的链接
+    downloadElement.href = href;
+    downloadElement.download = fileName; // 下载后文件名
+    document.body.appendChild(downloadElement);
+    downloadElement.click(); // 点击下载
+    document.body.removeChild(downloadElement); // 下载完成移除元素
+    window.URL.revokeObjectURL(href); // 释放掉blob对象
+  }
 }
 function exportFile() {
   exportExcel().then(res => {
