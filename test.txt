@@ -23,3 +23,21 @@
   }
 }
 http://react-china.org/t/topic/38534
+
+
+  <div style="width: 1300px; height: 300px; background: #f1f1f1">
+    <div class="left" style="float: left; width: 260px; height: 100%; background: #e1e1e1;">
+      left-left
+    </div>
+    <div class="right" style="float: right; width: calc(100% - 260px);">
+      <div class="opt-area" style="background: #d1d1d1">
+        <el-button>客户范围维护</el-button>
+        <el-button>添加字段</el-button>
+      </div>
+      <div class="table" style="background: #c1c1c1">
+        <el-table>
+          <el-table-column label="表格"></el-table-column>
+        </el-table>
+      </div>
+    </div>
+  </div>
