@@ -43,7 +43,7 @@
  let resizeable = false
  // 鼠标按下时的坐标，并在修改尺寸时保存上一个鼠标的位置
  let clientX, clientY
- let minW = 1
+ let minW = 260
  // 鼠标按下时的位置
  let direc = ''
  
@@ -75,10 +75,12 @@
    // 鼠标按下的位置在右边，修改宽度
    if (direc.indexOf('e') !== -1) {
      minW +=e.clientX - clientX
-     if (minW < 1) {
-       minW = 1
+     if (minW < 260) {
+       minW = 260
      }
-     c.style.borderRight = `${minW}px solid red`
+    if(minW > 400) {
+     minW = 400
+     c.style.width = minW + 'px'
     clientX = e.clientX
    }
   }
