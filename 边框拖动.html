@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Title</title>
+ <style>
+  body, html {
+   width: 100%;
+   height: 100%;
+   margin: 0;
+  }
+ 
+  #container {
+   width: 200px;
+   height: 200px;
+   padding: 15px;
+    border-right: 1px solid red;
+  }
+ 
+  .item {
+   cursor: default;
+   width: 100%;
+   height: 100%;
+   background: #757575;
+  }
+ </style>
+</head>
+<body id="body">
+<div id="container">
+ <div class="item"></div>
+</div>
+<script>
+ //需要调整尺寸的div
+ let c = document.getElementById('container')
+ // body监听移动事件
+ document.getElementById('body').addEventListener('mousemove', move)
+ // 鼠标按下事件
+ c.addEventListener('mousedown', down)
+ // 鼠标松开事件
+ document.getElementById('body').addEventListener('mouseup', up)
+ 
+ // 是否开启尺寸修改
+ let resizeable = false
+ // 鼠标按下时的坐标，并在修改尺寸时保存上一个鼠标的位置
+ let clientX, clientY
+ let minW = 1
+ // 鼠标按下时的位置
+ let direc = ''
+ 
+ // 鼠标松开时结束尺寸修改
+ function up() {
+  resizeable = false
+ }
+ 
+ // 鼠标按下时开启尺寸修改
+ function down(e) {
+  if (e.offsetX > c.offsetWidth -10) {
+   resizeable = true
+   direc = 'e'
+   clientX = e.clientX
+   clientY = e.clientY
+  }
+ }
+ 
+ // 鼠标移动事件
+ function move(e) {
+  let d =e.offsetX > c.offsetWidth -10
+  let cursor
+  if (!d) cursor = 'default';
+  else cursor = 'e-resize';
+  // 修改鼠标显示效果
+  c.style.cursor = cursor;
+  // 当开启尺寸修改时，鼠标移动会修改div尺寸
+  if (resizeable) {
+   // 鼠标按下的位置在右边，修改宽度
+   if (direc.indexOf('e') !== -1) {
+     minW +=e.clientX - clientX
+     if (minW < 1) {
+       minW = 1
+     }
+     c.style.borderRight = `${minW}px solid red`
+    clientX = e.clientX
+   }
+  }
+ }
+</script>
+</body>
+</html>
