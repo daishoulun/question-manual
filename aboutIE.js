@@ -16,3 +16,5 @@ function downloadFile(res) {
 }
 
 // IE url不支持中文，会报错
+
+// IE 日期不支持横杠，需要转换为斜杠
