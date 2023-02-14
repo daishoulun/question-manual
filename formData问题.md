@@ -1,0 +1,1 @@
+- 如果在formData中添加多个相同key的字段，传给后端时，会被解析为（key:value1,value2,value3...）
