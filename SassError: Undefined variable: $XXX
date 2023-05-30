@@ -1,0 +1,14 @@
+# Vue 项目使用SASS变量报错
+
+### 解决方法
+
+#### 修改vue.config.js
+```
+css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `@import "scssUrl";`
+      }
+    }
+  }
+```
